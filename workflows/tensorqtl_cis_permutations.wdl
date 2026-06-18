@@ -14,7 +14,7 @@ task tensorqtl_cis_permutations {
     Float? pval_threshold
     Int? seed
     String? flags
-
+    Int cis_window = 1000000
     Int memory
     Int disk_space
     Int num_threads
@@ -28,6 +28,7 @@ task tensorqtl_cis_permutations {
             $plink_base ${phenotype_bed} ${prefix} \
             --mode cis \
             --covariates ${covariates} \
+            --window ${cis_window} \
             ${"--phenotype_groups " + phenotype_groups} \
             ${"--fdr " + fdr} \
             ${"--pval_threshold " + pval_threshold} \
